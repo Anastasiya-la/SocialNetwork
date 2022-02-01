@@ -10,8 +10,17 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
+import {PostType} from "./components/Profile/MyPosts/Post/Post";
+import {DialogItemPropsType} from "./components/Dialogs/DialogItem/DialogItem";
+import {MessagePropsType} from "./components/Dialogs/Message/Message";
 
-function App() {
+type AppPropsType = {
+    posts: Array<PostType>
+    dialogs: Array<DialogItemPropsType>
+    messages: Array<MessagePropsType>
+}
+
+function App(props: AppPropsType) {
     return (
         <BrowserRouter>
         <div className='app-wrapper'>
@@ -20,8 +29,8 @@ function App() {
 
             <div className='app-wrapper-content'>
                 <Routes>
-                <Route path = '/profile' element={<Profile/>} />
-                <Route path = '/dialogs/*' element={<Dialogs/>} />
+                <Route path = '/profile' element={<Profile posts = {props.posts}/>} />
+                <Route path = '/dialogs/*' element={<Dialogs dialogs = {props.dialogs} messages = {props.messages}/>} />
                 <Route path = '/news' element={<News/>} />
                 <Route path = '/music' element={<Music/>} />
                 <Route path = '/settings' element={<Settings/>} />

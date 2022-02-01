@@ -1,9 +1,10 @@
 import React from "react";
 import p from './Post.module.css';
 
-type PostType = {
+export type PostType = {
     message: string
     likeCount: number
+    id: number
 }
 const Post:React.FC<PostType> = (props) => {
     return (
