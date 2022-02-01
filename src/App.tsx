@@ -13,11 +13,10 @@ import Settings from "./components/Settings/Settings";
 import {PostType} from "./components/Profile/MyPosts/Post/Post";
 import {DialogItemPropsType} from "./components/Dialogs/DialogItem/DialogItem";
 import {MessagePropsType} from "./components/Dialogs/Message/Message";
+import {stateType} from "./redux/state";
 
 type AppPropsType = {
-    posts: Array<PostType>
-    dialogs: Array<DialogItemPropsType>
-    messages: Array<MessagePropsType>
+    state: stateType
 }
 
 function App(props: AppPropsType) {
@@ -29,8 +28,8 @@ function App(props: AppPropsType) {
 
             <div className='app-wrapper-content'>
                 <Routes>
-                <Route path = '/profile' element={<Profile posts = {props.posts}/>} />
-                <Route path = '/dialogs/*' element={<Dialogs dialogs = {props.dialogs} messages = {props.messages}/>} />
+                <Route path = '/profile' element={<Profile posts = {props.state.profilePage.posts}/>} />
+                <Route path = '/dialogs/*' element={<Dialogs dialogs = {props.state.dialogsPage.dialogs} messages = {props.state.dialogsPage.messages}/>} />
                 <Route path = '/news' element={<News/>} />
                 <Route path = '/music' element={<Music/>} />
                 <Route path = '/settings' element={<Settings/>} />
