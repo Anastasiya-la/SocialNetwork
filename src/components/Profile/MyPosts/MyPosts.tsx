@@ -4,13 +4,18 @@ import Post, {PostType} from "./Post/Post";
 
 type MyPostsType = {
     posts: Array<PostType>
+    addPost: (postMessage: string) => void
 }
 
 const MyPosts = (props: MyPostsType) => {
     const newPostElement = React.createRef<HTMLTextAreaElement>();
     const addPost = () => {
-        let text = newPostElement.current?.value
-        alert(text);
+        if (newPostElement.current) {
+            let text = newPostElement.current.value
+            props.addPost(text);
+        }
+
+
     }
     return (
         <div className={p.postsBlock}>
@@ -22,7 +27,7 @@ const MyPosts = (props: MyPostsType) => {
                 </div>
             </div>
             <div className={p.posts}>
-                {props.posts.map(p => <Post message={p.message} likeCount={p.likeCount} id = {p.id}/>)}
+                {props.posts.map(p => <Post message={p.message} likeCount={p.likeCount} id={p.id}/>)}
             </div>
         </div>
     );
