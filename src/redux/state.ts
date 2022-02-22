@@ -3,6 +3,7 @@ import {PostType} from "../components/Profile/MyPosts/Post/Post";
 import {DialogItemPropsType} from "../components/Dialogs/DialogItem/DialogItem";
 import {MessagePropsType} from "../components/Dialogs/Message/Message";
 import {FriendPropsType} from "../components/Friends/Friend/Friend";
+import {rerenderEntireTree} from "../render";
 
 type profilePageType = {
     posts: Array<PostType>
@@ -89,8 +90,9 @@ let state: stateType = {
     }
 }
 export const addPost = (postMessage: string) => {
-    let newPost = {id: 5, message: postMessage, likeCount: 0};
+    const newPost: PostType = {id: 3, message: postMessage, likeCount: 0};
     state.profilePage.posts.push(newPost);
+    rerenderEntireTree(state);
 }
 
 
