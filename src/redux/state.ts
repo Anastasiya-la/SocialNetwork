@@ -2,6 +2,7 @@ import React from "react";
 import {PostType} from "../components/Profile/MyPosts/Post/Post";
 import {DialogItemPropsType} from "../components/Dialogs/DialogItem/DialogItem";
 import {MessagePropsType} from "../components/Dialogs/Message/Message";
+import {FriendPropsType} from "../components/Friends/Friend/Friend";
 
 type profilePageType = {
     posts: Array<PostType>
@@ -11,9 +12,16 @@ type dialogsPageType = {
     dialogs: Array<DialogItemPropsType>
     messages: Array<MessagePropsType>
 }
+
+
+type sideBarType = {
+    friends: Array<FriendPropsType>
+}
+
 export type stateType = {
     profilePage: profilePageType
     dialogsPage:dialogsPageType
+    sideBar: sideBarType
 
 }
 
@@ -58,6 +66,25 @@ let state: stateType = {
             {id: 4, message: 'Yo'},
             {id: 5, message: 'Yo'},
 
+        ]
+    },
+    sideBar: {
+        friends: [
+            {
+                id: 1,
+                src: 'https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg',
+                name: 'Veronika'
+            },
+            {
+                id: 2,
+                src: 'https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg',
+                name: 'Angelina'
+            },
+            {
+                id: 3,
+                src: 'https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg',
+                name: 'Varvara'
+            }
         ]
     }
 }
